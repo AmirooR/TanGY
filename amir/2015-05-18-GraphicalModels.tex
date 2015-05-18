@@ -1,0 +1,39 @@
+\documentclass[12pt, pdftex]{article}
+\usepackage{amsmath}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+\section*{Report: Graphical Models Energy Minimization}
+\noindent
+\textsl{[by Rahimi]}
+
+\noindent
+\textsl{2015-05-18}
+
+Consider the following \texttt{MAP} problem for the graphical model
+$(\mathcal{G},\mathcal{X_V},\theta)$:
+\begin{equation}
+x^{\star}=\argmin_{x\in\mathcal{X_V}} E(x) = \argmin_{x\in\mathcal{X_V}}
+\sum_{v\in\mathcal{V}} \theta_v(x_v) + \sum_{uv \in \mathcal{E}}
+\theta_{uv}(x_u,x_v)
+\end{equation}
+By defining vector $\mu$, this problem can be formulated as the following integer linear
+program:
+\begin{equation*}
+\begin{aligned}
+& \underset{x}{\text{min}}
+& & \sum_{v\in\mathcal{V}} \sum_{x_v \in \mathcal{X_V}} \theta_v(x_v)\mu_v(x_v)
++ \sum_{uv\in\mathcal{E}} \sum_{x_u,x_v \in \mathcal{X_UV}} \theta_{uv}(x_u,x_v)
+\mu_{uv}(x_u,x_v)\\
+& \text{s.t}
+& \sum_{x_v} \mu_v(x_v) = 1, v\in\mathcal{V}\\
+& & \sum_{x_v} \mu_{uv}(x_u, x_v) = \mu_u(x_u) \\
+& & \sum_{x_u} \mu_{uv}(x_u, x_v) = \mu_v(x_v) \\
+& & \mu \geq 0 \\
+& & \mu_v \in \{0,1\}^I
+\end{aligned}
+\end{equation*}
+
+khaabam gereft. Tangy is low now.
+\end{document}
