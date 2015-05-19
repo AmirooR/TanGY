@@ -1,12 +1,12 @@
 \documentclass[12pt, pdftex]{article}
 \usepackage{amsmath}
-
+\usepackage{amssymb}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
-\section*{Report: Graphical Models Energy Minimization}
+\section*{Graphical Models Energy Minimization}
 \noindent
-\textsl{[by Rahimi]}
+\textsl{[Amir]}
 
 \noindent
 \textsl{2015-05-18}
@@ -20,20 +20,47 @@ x^{\star}=\argmin_{x\in\mathcal{X_V}} E(x) = \argmin_{x\in\mathcal{X_V}}
 \end{equation}
 By defining vector $\mu$, this problem can be formulated as the following integer linear
 program:
-\begin{equation*}
+\begin{equation}
+\label{eq:ilp}
 \begin{aligned}
 & \underset{x}{\text{min}}
 & & \sum_{v\in\mathcal{V}} \sum_{x_v \in \mathcal{X_V}} \theta_v(x_v)\mu_v(x_v)
 + \sum_{uv\in\mathcal{E}} \sum_{x_u,x_v \in \mathcal{X_UV}} \theta_{uv}(x_u,x_v)
 \mu_{uv}(x_u,x_v)\\
 & \text{s.t}
-& \sum_{x_v} \mu_v(x_v) = 1, v\in\mathcal{V}\\
-& & \sum_{x_v} \mu_{uv}(x_u, x_v) = \mu_u(x_u) \\
-& & \sum_{x_u} \mu_{uv}(x_u, x_v) = \mu_v(x_v) \\
-& & \mu \geq 0 \\
-& & \mu_v \in \{0,1\}^I
+& & \sum_{x_v} \mu_v(x_v) = 1, v\in\mathcal{V},\\
+&&& \sum_{x_v} \mu_{uv}(x_u, x_v) = \mu_u(x_u) \\
+&&& \sum_{x_u} \mu_{uv}(x_u, x_v) = \mu_v(x_v) \\
+&&& \mu \geq 0 \\
+&&& \mu_v \in \{0,1\}^I
 \end{aligned}
-\end{equation*}
+\end{equation}
+
+All but integrity constraints of \ref{eq:ilp} can be represented in a form
+\begin{equation}
+\begin{aligned}
+A\mu = b \\
+\mu \geq 0
+\end{aligned}
+\end{equation}
+
+Hence, they form a \textit{polytope} in the space $\mathbb{R}^I$ which is call
+\textit{local polytope} and will be denoted by $\mathcal{L}$. So, equation
+\ref{eq:ilp} can be represented by
+\begin{equation}
+\label{eq:primal_short}
+\begin{aligned}
+\underset{\mu \in \mathcal{L} \cap \{0,1\}^I}{\text{min}} <\theta,\mu> .
+\end{aligned}
+\end{equation}
+Ommitting integrality constraint leads to its \textit{local polytope (LP)
+relaxation} often called also \textit{linear programming relaxation}, gives us:
+\begin{equation}
+\label{eq:primal_relaxed}
+\underset{\mu \in \mathcal{L}}{\text{min}} <\theta,\mu> .
+\end{equation}
+where $\mu$ will be called \textit{primal} w.r.t the problem
+\ref{eq:primal_short} or \ref{eq:primal_relaxed}.
 
 khaabam gereft. Tangy is low now.
 \end{document}
