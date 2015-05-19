@@ -24,10 +24,11 @@ where \sigma^{2}, g are the uncorrelated Gaussian background noise, and the gain
 In order to find the optimal estimates of $\{X,f,B\}$ we maximize the following negative log-likelihood:
 
 \begin{equation}
-NLL = \sum_{i=1}^{N}\sum_{j=1}^{D} \frac{y_{ij} - f_{i}\sum_{l=1}^{H^{2}D}X_{l}K^{(i)}_{lj}-B_{i}}{var_{i}} + \epsilon.\sum_{n,m}\sum_{k=\pm1} |X_{n\pm k,m\pm k}-X_{n,m}|^{2},
+NLL = \sum_{i=1}^{N}\sum_{j=1}^{D} \frac{y_{ij}-f_{i}\sum_{l=1}^{H^{2}D}X_{l}K^{(i)}_{lj}-B_{i}}{var_{i}} + \epsilon.\sum_{n,m}\sum_{k=\pm1} |X_{n\pm k,m\pm k}-X_{n,m}|^{2},
 \end{equation}
 where the second term comes from smoothness prior with the strength set by hyper-parameter $\epsilon$.
 
-There's more to write and I have so many plots to show, but tangy is extremely low. Nonetheless, this is a good start towards conquering GoshaDy.
+There's more to write and I have so many plots to show, but tangy is extremely low.
+Nonetheless, this is a good start towards conquering GoshaDy.
  
 \end{document}
