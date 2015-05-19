@@ -15,12 +15,12 @@ super-resolution PSF $X$ sampled at the data grid:
 y_i= f_iXK^{(i)} + B_i + e_i,
 \end{equation}
 
-where f_i is the brightness of the star $i$, B_i is the flat-field at the patch $i$, and $e_i$ is 
+where $f_i$ is the brightness of the star $i$, $B_i$ is the flat-field at the patch $i$, and $e_i$ is 
 a Gaussian noise model with the variance $var_i$
 \begin{equation}
 var_i = \sigma^{2} + g(f_iXK^{(i)} + B_i),
 \end{equation}
-where \sigma^{2}, g are the uncorrelated Gaussian background noise, and the gain respectively.
+where $\sigma^{2}$, $g$ are the uncorrelated Gaussian background noise, and the gain respectively.
 In order to find the optimal estimates of $\{X,f,B\}$ we maximize the following negative log-likelihood:
 
 \begin{equation}
