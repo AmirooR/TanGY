@@ -1,0 +1,33 @@
+\documentclass[12pt, pdftex]{article}
+\begin{document}
+\section*{Super resolution model of WFC3/IR HST PSF}
+\noindent
+\textsl{[Javad]}
+
+\noindent
+\textsl{2015-05-18}
+
+We want to find a data-driven pixel-convolved model of the PSF for the imaging data of HST WFC3/IR
+instrument. We model the $D$ dimensional observed images of stars $\{y_i\}$ as a $H^2D$ dimensional 
+super-resolution PSF $X$ sampled at the data grid:
+
+\begin{equation}
+y_i= f_iXK^{(i)} + B_i + e_i,
+\end{equation}
+
+where f_i is the brightness of the star $i$, B_i is the flat-field at the patch $i$, and $e_i$ is 
+a Gaussian noise model with the variance $var_i$
+\begin{equation}
+var_i = \sigma^{2} + g(f_iXK^{(i)} + B_i),
+\end{equation}
+where \sigma^{2}, g are the uncorrelated Gaussian background noise, and the gain respectively.
+In order to find the optimal estimates of $\{X,f,B\}$ we maximize the following negative log-likelihood:
+
+\begin{equation}
+NLL = \sum_{i=1}^{N}\sum_{j=1}^{D} \frac{y_{ij} - f_{i}\sum_{l=1}^{H^{2}D}X_{l}K^{(i)}_{lj}-B_{i}}{var_{i}} + \epsilon.\sum_{n,m}\sum_{k=\pm1} |X_{n\pm k,m\pm k}-X_{n,m}|^{2},
+\end{equation}
+where the second term comes from smoothness prior with the strength set by hyper-parameter $\epsilon$.
+
+There's more to write and I have so many plots to show, but tangy is extremely low. Nonetheless, this is a good start towards conquering GoshaDy.
+ 
+\end{document}
